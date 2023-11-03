@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        GreetingImage("Happy Birthday Kazuma!", "From Kazuma")
+        GreetingImage("Happy Birthday Kazuma!", "From Ema")
     }
 }
 
