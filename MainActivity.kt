@@ -20,7 +20,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.happybirthday.ui.theme.HappyBirthdayTheme
 import androidx.compose.foundation.Image
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 
 
 class MainActivity : ComponentActivity() {
@@ -30,8 +32,8 @@ class MainActivity : ComponentActivity() {
             HappyBirthdayTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colorScheme.background) {
-                    GreetingImage(message = "Happy Birthday Sam!", from = "From Emma")
-                }
+                    GreetingImage(message = stringResource(R.string.happy_birthday_text),
+                        from = stringResource(R.string.signature_text))                }
             }
         }
     }
@@ -41,7 +43,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        GreetingImage("Happy Birthday Kazu!", "From Ema")
+        GreetingImage("Happy Birthday Kazuma!", "From Ema")
     }
 }
 
@@ -62,7 +64,7 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
             fontSize = 36.sp,
             modifier = Modifier
                 .padding(16.dp)
-                .align(alignment = Alignment.End)
+                .align(alignment = Alignment.CenterHorizontally)
         )
     }
 }
@@ -72,7 +74,9 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) 
     Box {
         Image(
             painter = image,
-            contentDescription = null
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            alpha = 0.5F
         )
         GreetingText(
             message = message,
